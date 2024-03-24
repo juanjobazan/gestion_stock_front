@@ -1,13 +1,14 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import React from "react";
-import RoutesFront from "./routes/RoutesFront";
+import {BrowserRouter as Router} from 'react-router-dom'
+import RoutesFront from './routes/RoutesFront'
 
-const App = ()=>{
+const App = () => {
+ return(
   <>
   <Router>
-    <RoutesFront/>
-  </Router>
-  </>
+  <RoutesFront/>
+ </Router>
+</>
+ )
 }
 
 export default App

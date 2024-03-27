@@ -12,7 +12,7 @@ const RoutesFront = () => {
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/login' element={<LoginPage/>}/>
-                <Route path='/*' element={<ErrorPage/>}/>
+                <Route path='*' element={<ErrorPage/>}/>
 
             </Routes>
             <FooterC />

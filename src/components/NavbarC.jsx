@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink } from 'react-router-dom';
 
 const NavbarC = () => {
     return (
@@ -13,8 +14,8 @@ const NavbarC = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Productos</Nav.Link>
-                            <Nav.Link href="#link">Clientes</Nav.Link>
+                            <NavLink href="#home" className={'nav-link'}>Productos</NavLink>
+                            <NavLink href="#link" className={'nav-link'}>Clientes</NavLink>
                             <NavDropdown title="Reportes" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Reportes</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">
@@ -28,7 +29,7 @@ const NavbarC = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav className='ms-auto'>
-                            <Nav.Link href="#home">Iniciar Sesion</Nav.Link>
+                            <NavLink to="/login" className={'nav-link'}>Iniciar Sesion</NavLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

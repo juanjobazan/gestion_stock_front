@@ -6,6 +6,8 @@ import ErrorPage from '../pages/ErrorPage'
 import LoginPage from '../pages/LoginPage'
 import ProductPage from '../pages/ProductPage'
 import CreateProductPage from '../pages/CreateProductPage'
+import CustomerPage from '../pages/CustomerPage'
+import CreateCustomerPage from '../pages/CreateCustomerPage'
 
 const RoutesFront = () => {
     return (
@@ -17,7 +19,8 @@ const RoutesFront = () => {
                 <Route path='*' element={<ErrorPage/>}/>
                 <Route path='/product' element={<ProductPage/>}/>
                 <Route path='/createProduct' element={<CreateProductPage/>}/>
-
+                <Route path='/customer' element={<CustomerPage/>}/>
+                <Route path='/createCustomer' element={<CreateCustomerPage/>}/>
             </Routes>
             <FooterC />
         </>

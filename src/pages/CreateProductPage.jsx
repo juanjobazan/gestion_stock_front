@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import productSchema from '../helpers/validationSchemaYupProd';
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
 const CreateProductPage = () => {
     return (
         <>
@@ -82,7 +83,7 @@ const CreateProductPage = () => {
                                     </Form>
                                 </Card.Body>
                                 <hr />
-                                <NavLink to="/register" className="nav-link text-center ">Cancelar</NavLink>
+                                <Link to={'/'} relative='path' variant='danger' className="nav-link text-center " >Cancelar</Link>
                             </Card>
 
                         </div>

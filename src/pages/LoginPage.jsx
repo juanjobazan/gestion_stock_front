@@ -2,10 +2,35 @@ import React from 'react'
 import { Card } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { NavLink } from 'react-router-dom';
+import { NavLink, json, useNavigate } from 'react-router-dom';
 import userSchemaLogin from '../helpers/validationSchemaYupLogin';
 import { Formik } from 'formik';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import clienteAxios, { config } from '../../utils/axiosCliente';
 const LoginPage = () => {
+    const navigate=useNavigate()
+    const sendForm = async(values)=>{
+
+      try {
+        const res = await clienteAxios.post('/user/login',values,config)
+        if(res.data?.token){
+            localStorage.setItem('token',JSON.stringify(res.data.token))
+            localStorage.setItem('role',JSON.stringify(res.data.role))
+            if (res.data.role === 'user') {
+                navigate('/')
+              } else {
+                navigate('/')
+              }
+        }
+      } catch (error) {
+        Swal.fire({
+            icon:'error',
+            title:'Oooopss..',
+            text:'Usuario y/o Contrasena incorrecta',
+        })
+      }
+    }
     return (
         <>
         <Formik

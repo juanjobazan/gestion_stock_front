@@ -20,8 +20,9 @@ const NavbarC = () => {
                                 <NavLink to="/product" className={'nav-link'}>Acciones</NavLink>
                             </NavDropdown>
                             <NavDropdown title="Clientes">
-                                <NavLink to="/customer" className={'nav-link'}>Buscar</NavLink>
-                                <NavLink to="/createCustomer" className={'nav-link'}>Nuevo</NavLink>
+                            <NavLink to="/createCustomer" className={'nav-link'}>Nuevo</NavLink>
+                                <NavLink to="/customer" className={'nav-link'}>Acciones</NavLink>
+                                
                             </NavDropdown>
                             <NavDropdown title="Reportes" id="basic-nav-dropdown">
                                 <NavDropdown.Item to="#action/3.1">Reportes</NavDropdown.Item>

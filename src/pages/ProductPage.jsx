@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import clienteAxios, { config } from '../../utils/axiosCliente';
 import { Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import ModalProd from '../components/ModalProd';
 const ProductPage = () => {
     const [allProd, setAllProd] = useState([])
     const [refreshState, resRefrestate] = useState(false)
@@ -11,17 +12,17 @@ const ProductPage = () => {
         setAllProd(res.data)
     }
 
-    const handleClick= async(id)=>{
+    const handleClick = async (id) => {
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
             },
             buttonsStyling: false
-          })
+        })
 
-          swalWithBootstrapButtons.fire({
+        swalWithBootstrapButtons.fire({
             title: 'Estas Seguro?',
             text: "No podras Revertir Esto!",
             icon: 'warning',
@@ -29,30 +30,30 @@ const ProductPage = () => {
             confirmButtonText: 'SI, Eliminar!',
             cancelButtonText: 'No, Cancelar!',
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-             clienteAxios.delete(`/product/${id}`,config)
-              .then(res=>{
-                if(res.status === 200 ){
-                  swalWithBootstrapButtons.fire(
-                    'Eliminado!',
-                    res.data.msg,
-                    'success' 
-                  )
-                  }
-              })
-              resRefrestate(true)
+                clienteAxios.delete(`/product/${id}`, config)
+                    .then(res => {
+                        if (res.status === 200) {
+                            swalWithBootstrapButtons.fire(
+                                'Eliminado!',
+                                res.data.msg,
+                                'success'
+                            )
+                        }
+                    })
+                resRefrestate(true)
             } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire(
-                'Cancelado',
-                'NO se Elimino :)',
-                'error'
-              )
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'NO se Elimino :)',
+                    'error'
+                )
             }
-          })
+        })
     }
 
     useEffect(() => {
@@ -82,6 +83,7 @@ const ProductPage = () => {
                                         <td>{prod.precio}</td>
                                         <td>{prod.stock}</td>
                                         <td>
+                                            <ModalProd idProd={prod._id} getAllProd={getAllProd} />
                                             <Button variant='danger' onClick={() => { handleClick(prod._id) }} >Elimimar</Button>
                                         </td>
                                     </tr>)

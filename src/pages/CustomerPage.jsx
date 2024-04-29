@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Swal from 'sweetalert2';
 import clienteAxios, { config } from '../../utils/axiosCliente';
+import ModalCusto from '../components/ModalCusto';
 const CustomerPage = () => {
   const [allCustomer, setAllCustomer] = useState([])
   const [refreshState, resRefrestate] = useState()
@@ -16,53 +17,53 @@ const CustomerPage = () => {
   const handleClick = async (id) => {
 
     const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
     })
 
     swalWithBootstrapButtons.fire({
-        title: 'Estas Seguro?',
-        text: "No podras Revertir Esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'SI, Eliminar!',
-        cancelButtonText: 'No, Cancelar!',
-        reverseButtons: true
+      title: 'Estas Seguro?',
+      text: "No podras Revertir Esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'SI, Eliminar!',
+      cancelButtonText: 'No, Cancelar!',
+      reverseButtons: true
     }).then((result) => {
-        if (result.isConfirmed) {
-            clienteAxios.delete(`/customer/${id}`, config)
-                .then(res => {
-                    if (res.status === 200) {
-                        swalWithBootstrapButtons.fire(
-                            'Eliminado!',
-                            res.data.msg,
-                            'success'
-                        )
-                    }
-                })
-            resRefrestate(true)
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-                'Cancelado',
-                'NO se Elimino :)',
-                'error'
-            )
-        }
+      if (result.isConfirmed) {
+        clienteAxios.delete(`/customer/${id}`, config)
+          .then(res => {
+            if (res.status === 200) {
+              swalWithBootstrapButtons.fire(
+                'Eliminado!',
+                res.data.msg,
+                'success'
+              )
+            }
+          })
+        resRefrestate(true)
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'NO se Elimino :)',
+          'error'
+        )
+      }
     })
-}
-  useEffect(()=>{
+  }
+  useEffect(() => {
     getAllCustomer()
     resRefrestate()
-  },[refreshState])
+  }, [refreshState])
   return (
     <>
-     <div className='container my-5'>
+      <div className='container my-5'>
         <div className='d-flex justify-content-center'>
           <Form >
             <Row>
@@ -79,8 +80,8 @@ const CustomerPage = () => {
             </Row>
           </Form>
         </div>
-        </div> 
-        <div className='container'>
+      </div>
+      <div className='container'>
         <div className='d-flex justify-content-center mt-5'>
 
           <Table striped bordered hover size='sm'>
@@ -95,17 +96,18 @@ const CustomerPage = () => {
             </thead>
             <tbody>
               {
-                allCustomer.map((custo)=>
-                <tr key={custo._id}>
-                  <td>{custo.nombre}</td>
-                  <td>{custo.dni}</td>
-                  <td>{custo.mail}</td>
-                  <td>{custo.direccion}</td>
-                  <td>
-                    <Button variant='danger' onClick={()=>{handleClick(custo._id)}}>Eliminar</Button>
-                  </td>
-                </tr>
-              )}
+                allCustomer.map((custo) =>
+                  <tr key={custo._id}>
+                    <td>{custo.nombre}</td>
+                    <td>{custo.dni}</td>
+                    <td>{custo.mail}</td>
+                    <td>{custo.direccion}</td>
+                    <td>
+                      <ModalCusto idCusto={custo._id} getAllCustomer={getAllCustomer} />
+                      <Button variant='danger' onClick={() => { handleClick(custo._id) }}>Eliminar</Button>
+                    </td>
+                  </tr>
+                )}
 
 
             </tbody>

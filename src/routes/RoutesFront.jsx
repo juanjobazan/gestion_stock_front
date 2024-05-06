@@ -8,6 +8,7 @@ import ProductPage from '../pages/ProductPage'
 import CreateProductPage from '../pages/CreateProductPage'
 import CustomerPage from '../pages/CustomerPage'
 import CreateCustomerPage from '../pages/CreateCustomerPage'
+import ProductDetalle from '../pages/ProductDetalle'
 
 const RoutesFront = () => {
     return (
@@ -21,6 +22,7 @@ const RoutesFront = () => {
                 <Route path='/createProduct' element={<CreateProductPage/>}/>
                 <Route path='/customer' element={<CustomerPage/>}/>
                 <Route path='/createCustomer' element={<CreateCustomerPage/>}/>
+                <Route path='/detalleProduct/:id' element={<ProductDetalle/>}/>
             </Routes>
             <FooterC />
         </>

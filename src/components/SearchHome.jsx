@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import clienteAxios, { config } from '../../utils/axiosCliente';
 import '../css/CardsSearchHome.css'
+import { Link } from 'react-router-dom';
 const SearchHome = () => {
 
   const [allProduct, setAllProduc] = useState([])
@@ -50,7 +51,7 @@ const SearchHome = () => {
                   <Card.Body>
                     <Card.Title>Codigo: {product.codigo}</Card.Title>
                     <Card.Text>
-                      Descripcion: {product.descripcion}
+                      Nombre: {product.descripcion}
                     </Card.Text>
                     <Card.Text>
                       Precio: ${product.precio}
@@ -58,7 +59,7 @@ const SearchHome = () => {
                     <Card.Text>
                       Stock: {product.stock}
                     </Card.Text>
-                    <Button variant="primary">Consultar</Button>
+                    <Link to={`/detalleProduct/${product._id}`} className='btn btn-outline-warning '>Consultar</Link>
                   </Card.Body>
                 </Card>)
 

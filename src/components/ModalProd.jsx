@@ -54,46 +54,44 @@ const ModalProd = (props) => {
     }, [])
     return (
         <>
-        <Button variant='primary' onClick={handleClick}>Editar</Button>
-      {
-       <Modal show={show} onHide={handleClose}>
-       <Modal.Header closeButton>
-           <Modal.Title>Editar Producto</Modal.Title>
-       </Modal.Header>
-       <Modal.Body>
-           <Form>
-               <Form.Group className="mb-3" controlId="CodigoProd">
-                   <Form.Label>Codigo</Form.Label>
-                   <Form.Control type="number" name='codigo' placeholder="Ingrese el codigo" value={prod?.codigo} onChange={handleChange} disabled/>
-               </Form.Group>
+            <Button variant='primary' onClick={handleClick}>Editar</Button>
+            {
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Editar Producto</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="CodigoProd">
+                                <Form.Label>Codigo</Form.Label>
+                                <Form.Control type="number" name='codigo' placeholder="Ingrese el codigo" value={prod?.codigo} onChange={handleChange} disabled />
+                            </Form.Group>
 
-               <Form.Group className="mb-3" controlId="descripProd">
-                   <Form.Label>Descripcion</Form.Label>
-                   <Form.Control type="text" name='descripcion' placeholder="Ingrese la descripcion del producto" value={prod?.descripcion} onChange={handleChange} />
-               </Form.Group>
+                            <Form.Group className="mb-3" controlId="descripProd">
+                                <Form.Label>Descripcion</Form.Label>
+                                <Form.Control type="text" name='descripcion' placeholder="Ingrese la descripcion del producto" value={prod?.descripcion} onChange={handleChange} />
+                            </Form.Group>
 
-               <Form.Group className="mb-3" controlId="precioProd">
-                   <Form.Label>Precio</Form.Label>
-                   <Form.Control type="numbre" name='precio' placeholder="Ingrese el precio del Producto" value={prod?.precio} onChange={handleChange} />
-               </Form.Group>
+                            <Form.Group className="mb-3" controlId="precioProd">
+                                <Form.Label>Precio</Form.Label>
+                                <Form.Control type="numbre" name='precio' placeholder="Ingrese el precio del Producto" value={prod?.precio} onChange={handleChange} />
+                            </Form.Group>
 
-               <Form.Group className="mb-3" controlId="stockProd">
-                   <Form.Label>Capacidad</Form.Label>
-                   <Form.Control type="number" name='stock' placeholder="Ingrese el Stock" value={prod?.stock} onChange={handleChange} />
-               </Form.Group>
-              
+                            <Form.Group className="mb-3" controlId="stockProd">
+                                <Form.Label>Stock</Form.Label>
+                                <Form.Control type="number" name='stock' placeholder="Ingrese el Stock" value={prod?.stock} onChange={handleChange} />
+                            </Form.Group>
+                        </Form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={() => sendFormProd(prod._id)} >
+                            Guardar Cambios
+                        </Button>
 
-           </Form>
-       </Modal.Body>
-       <Modal.Footer>
-           <Button onClick={() => sendFormProd(prod._id)} >
-               Guardar Cambios
-           </Button>
+                    </Modal.Footer>
+                </Modal>
+            }
 
-       </Modal.Footer>
-   </Modal>
-      }
-            
         </>
     )
 }

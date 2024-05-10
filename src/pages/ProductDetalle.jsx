@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import clienteAxios, { config } from '../../utils/axiosCliente'
 
 const ProductDetalle = () => {
@@ -44,6 +44,8 @@ const ProductDetalle = () => {
                         </Card.Text>
                         <br />
                         <Button >Agregar</Button>
+                        <hr />
+                        <Link to={'/'} className='nav-link '>Volver</Link>
                     </Card.Body>
                 </Card>
             </div>

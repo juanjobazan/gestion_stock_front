@@ -22,8 +22,10 @@ const NavbarC = () => {
                             <NavDropdown title="Clientes">
                             <NavLink to="/createCustomer" className={'nav-link'}>Nuevo</NavLink>
                                 <NavLink to="/customer" className={'nav-link'}>Acciones</NavLink>
-                                
                             </NavDropdown>
+                            <Nav>
+                                <NavLink to="/sale" className={'nav-link'}>Venta</NavLink>
+                            </Nav>
                             <NavDropdown title="Reportes" id="basic-nav-dropdown">
                                 <NavDropdown.Item to="#action/3.1">Reportes</NavDropdown.Item>
                                 <NavDropdown.Item to="#action/3.2">
@@ -42,7 +44,7 @@ const NavbarC = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
+<hr/>
         </>
     )
 }
